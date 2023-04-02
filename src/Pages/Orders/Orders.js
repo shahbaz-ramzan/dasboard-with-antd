@@ -66,9 +66,7 @@ function Orders() {
         ]}
         dataSource={dataOrders}
         //  loading={loading}
-         pagination={{
-          pageSize:5,
-         }}
+         pagination={false}
       />
       
     </Space>
