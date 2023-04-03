@@ -1,4 +1,4 @@
-import {  Space, Table, Typography } from "antd";
+import { Space, Table, Typography } from "antd";
 import React from "react";
 import { getOrders } from "../../API";
 import { useState, useEffect } from "react";
@@ -10,50 +10,42 @@ function Orders() {
   useEffect(() => {
     setLoading(true);
     getOrders().then((res) => {
-      
       // console.log("res11:",res)
-      setDataOrders(res?.carts[0].products); 
-      setLoading(false)
+      setDataOrders(res?.carts[0].products);
+      setLoading(false);
     });
-
   }, []);
-  
+
   // console.log("data Orders",dataOrders)
-  
 
   return (
-    <Space direction="vertical" size={20} >
+    <Space direction="vertical" size={20}>
       <Typography.Title level={4}>Orders</Typography.Title>
-      
-      
+
       <Table
-      loading={loading}
+        loading={loading}
         columns={[
           {
             title: "ID",
             dataIndex: "id",
-            
           },
           {
             title: "Title",
             dataIndex: "title",
-            render:(title)=>{
-              return<span>{title}</span>
-            }
+            render: (title) => {
+              return <span>{title}</span>;
+            },
           },
           {
             title: "Price",
             dataIndex: "price",
-            render:(value)=><span>${value}</span>
+            render: (value) => <span>${value}</span>,
           },
           {
             title: "DiscountedPrice",
             dataIndex: "discountedPrice",
-            render:(value)=><span>${value}</span>
-            
+            render: (value) => <span>${value}</span>,
           },
-
-
 
           {
             title: "Quantity",
@@ -66,9 +58,8 @@ function Orders() {
         ]}
         dataSource={dataOrders}
         //  loading={loading}
-         pagination={false}
+        pagination={false}
       />
-      
     </Space>
   );
 }

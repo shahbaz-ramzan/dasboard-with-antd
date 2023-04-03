@@ -6,9 +6,30 @@ import {
 } from "@ant-design/icons";
 import { Card, Space, Statistic, Table, Typography } from "antd";
 import React, { useEffect, useState } from "react";
-import { getRecentOrders } from "../../API";
+import { getCustomers, getInventory, getOrders, getRecentOrders } from "../../API";
 
 function Dashboard() {
+
+  const [orders,setOrders]=useState(0);
+  const [revenue,setRevenue] = useState(0);
+  const [customers,setCustomers] = useState(0);
+  const [inventory,setInventory] =useState(0);
+
+
+  useEffect(()=>{
+      getOrders().then((res)=>{
+         setOrders(res.total);
+         setRevenue(res.total)
+      })
+      getInventory().then((res)=>{
+         setInventory(res.total)
+      })
+      getCustomers().then((res)=>{
+        setCustomers(res.total)
+      })
+      
+  },[])
+  
   return (
     <div>
     <div>
@@ -27,7 +48,7 @@ function Dashboard() {
             />
           }
           title={"Orders"}
-          value={12345}
+          value={orders}
         />
         <DashbaordCard
           icon={
@@ -42,7 +63,7 @@ function Dashboard() {
             />
           }
           title={"Inventory"}
-          value={12345}
+          value={inventory}
         />
         <DashbaordCard
           icon={
@@ -57,7 +78,7 @@ function Dashboard() {
             />
           }
           title={"Customers"}
-          value={12345}
+          value={customers}
         />
         <DashbaordCard
           icon={
@@ -72,7 +93,7 @@ function Dashboard() {
             />
           }
           title={"Revenue"}
-          value={12345}
+          value={revenue}
         />
       </Space>
      
