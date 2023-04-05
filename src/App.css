@@ -30,11 +30,17 @@
     flex:1;
     justify-content: flex-start;
     align-items: flex-start;
+    background-color: rgba(0, 0,0, 0.05);
 }
 
 .SideMenu{
     background-color:gray;
 
+}
+.SideMenuVertical{
+    height: 450px;
+    background-color: rgb(196, 175, 175);
+    width: 200px; 
 }
 
 .PageContent{
